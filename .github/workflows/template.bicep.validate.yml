@@ -29,10 +29,6 @@ on: # yamllint disable-line rule:truthy
       AZURE_SUBSCRIPTION_ID:
         required: true
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   Validate:
     name: Validate
