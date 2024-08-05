@@ -29,17 +29,12 @@ on: # yamllint disable-line rule:truthy
       AZURE_SUBSCRIPTION_ID:
         required: true
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   Validate:
     name: Validate
     environment: defaultenv
     runs-on: ubuntu-latest
     permissions:
-      id-token: write
       actions: read
       contents: read
       security-events: write
