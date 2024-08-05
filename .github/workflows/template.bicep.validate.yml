@@ -22,10 +22,17 @@ on: # yamllint disable-line rule:truthy
     secrets:
       azureEnviromentCredentials:
         required: true
+      AZURE_CLIENT_ID:
+        required: true
+      AZURE_TENANT_ID:
+        required: true
+      AZURE_SUBSCRIPTION_ID:
+        required: true
 
 jobs:
   Validate:
     name: Validate
+    environment: defaultenv
     runs-on: ubuntu-latest
     permissions:
       actions: read
@@ -74,7 +81,10 @@ jobs:
       - uses: Azure/login@v1
         name: Run Azure Login
         with:
-          creds: "${{ secrets.azureEnviromentCredentials }}"
+          #creds: "${{ secrets.azureEnviromentCredentials }}"
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           environment: "AzureCloud"
 
       - name: Get KeyVault Secret(s)
