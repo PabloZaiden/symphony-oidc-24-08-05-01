@@ -1,10 +1,6 @@
 ---
 name: "CI Bicep"
 
-permissions:
-  id-token: write
-  contents: read
-
 on: # yamllint disable-line rule:truthy
   # push:
   #   branches: [main]
@@ -28,6 +24,10 @@ on: # yamllint disable-line rule:truthy
         description: "Environment Key Vault Name"
         required: true
         default: "kv-kjbzjwhs-109"
+
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
   Validate:
